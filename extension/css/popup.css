@@ -1,0 +1,632 @@
+#modal {
+    width: 365px;
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: #fff;
+    font-family: 'Inter', sans-serif;
+    color: rgb(36, 39, 42);
+}
+
+.modalContent {
+    padding: 20px;
+}
+
+/* Header */
+#header {
+    display: flex;
+}
+
+.headerTab {
+    width: 50%;
+    text-align: center;
+    padding: 20px 0;
+    color: rgb(36, 39, 42);
+    font-weight: 900;
+}
+
+.headerTab.inactive {
+    background-color: rgb(250, 250, 250);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(240, 240, 241);
+    cursor: pointer;
+    color: rgb(162, 162, 168);
+    transition-duration: 100ms;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    transition-property: color;
+    cursor: pointer;
+}
+
+.headerTab.receive.inactive {
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: rgb(240, 240, 241);
+}
+
+.headerTab.subscriptions.inactive {
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgb(240, 240, 241);
+}
+
+.headerTab:hover {
+    color: rgb(36, 39, 42);
+}
+
+.headerText {
+    font-size: 16px;
+}
+
+/* Buttons */
+.button {
+    color: #fff;
+    background-color: #6E72EC;
+    cursor: pointer;
+    border: 2px solid #6E72EC;
+    height: 56px;
+    width: 100%;
+    border-radius: 28px;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 100ms;
+    transition-timing-function: ease;
+}
+
+.button .svg {
+    margin-right: 5px;
+}
+
+.button:hover {
+    background-color: inherit;
+    border-color: #6E72EC;
+    color: #6E72EC;
+}
+
+.button:hover .svg path {
+    stroke: #6E72EC;
+}
+
+.button.delete {
+    border-color: rgb(229, 72, 77);
+    background-color: rgb(229, 72, 77);
+    color: #fff;
+}
+
+.button.delete:hover {
+    background-color: inherit;
+    border-color: rgb(229, 72, 77);
+    color: rgb(229, 72, 77);
+}
+
+.button.delete:hover .svg path {
+    stroke: rgb(229, 72, 77);
+}
+
+
+.button.pause {
+    border-color: rgb(241 184 29);
+    background-color: rgb(241 184 29);
+    color: #fff;
+}
+
+.button.pause:hover {
+    background-color: inherit;
+    border-color: rgb(241 184 29);
+    color: rgb(241 184 29);
+}
+
+.button.pause:hover .svg path {
+    stroke: rgb(241 184 29);
+}
+
+.button.continue {
+    border-color: rgb(84 191 28);
+    background-color: rgb(84 191 28);
+    color: #fff;
+}
+
+.button.continue:hover {
+    background-color: inherit;
+    border-color: rgb(84 191 28);
+    color: rgb(84 191 28);
+}
+
+.button.continue:hover .svg path {
+    stroke: rgb(84 191 28);
+}
+
+.marginBottom10 {
+    margin-bottom: 10px;
+}
+
+/* Sub List */
+#subList {
+    margin-bottom: 20px;
+}
+
+.subItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#subList .subItem:last-child {
+    margin-bottom: 0px;
+}
+
+.subIcon {
+    width: 30px;
+    height: 30px;
+}
+
+.subIcon img {
+    width: 100%;
+}
+
+.subIcon.youtube {
+    background: url("../img/youtubeLogo.png") no-repeat center;
+    background-size: contain;
+}
+.subIcon.medium {
+    background: url("../img/mediumLogo.png") no-repeat center;
+    background-size: contain;
+}
+.subIcon.twitch {
+    background: url("../img/twitchLogo.png") no-repeat center;
+    background-size: contain;
+}
+.subIcon.github {
+    background: url("../img/github-logo.png") no-repeat center;
+    background-size: contain;
+}
+.subIcon.website {
+    background: url("../img/web.svg") no-repeat center;
+    background-size: contain;
+}
+.subIcon.people, .subIcon.family {
+    background: url("../img/user.svg") no-repeat center;
+    background-size: contain;
+}
+
+.subIcon:not(.youtube, .medium, .twitch, .website, .people, .github, .family){
+    background: url("../img/defaultLogo.png") no-repeat center;
+    background-size: contain;
+}
+
+.subInfo {
+    width: calc(100% - 139px);
+}
+
+.subInfo .name {
+    display: block;
+    color: rgb(36, 39, 42);
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.subInfo .payInfo {
+    font-weight: 400;
+}
+
+.subInfo .payInfo .amount {
+    color: rgb(162, 162, 168);
+    font-size: 14px;
+}
+
+.subInfo .payInfo .schedule {
+    color: rgb(63, 64, 69);
+    font-size: 14px;
+}
+
+.subStatus .status {
+    padding: 0 8px;
+    height: 20px;
+    display: block;
+    font-size: 11px;
+    line-height: 20px;
+    border-radius: 10px;
+}
+
+.subStatus {
+    width: 55px;
+    text-align: center;
+}
+
+.subStatus .active {
+    background-color: rgb(84 191 28);
+    color: #fff;
+}
+
+.subStatus .paused {
+    background-color: rgb(241 184 29);
+    color: #fff;
+}
+
+.subMore {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    transition-duration: 100ms;
+    transition-timing-function: ease;
+    background: url("../img/Info.png") no-repeat center;
+    background-size: contain;
+}
+
+.subMore:hover {
+    opacity: 0.6;
+}
+
+/* Subscription Details */
+#headerNav {
+    padding: 10px;
+    position: relative;
+}
+
+.backButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 100ms;
+    transition-timing-function: ease;
+    position: absolute;
+    left: 10px;
+}
+
+.backButton:hover {
+    background-color: rgb(238, 239, 238);
+}
+
+.backButton:hover .svg path {
+    stroke: #6E72EC;
+}
+
+.editButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 100ms;
+    transition-timing-function: ease;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.editButton:hover {
+    background-color: rgb(238, 239, 238);
+}
+
+.editButton:hover .svg path {
+    stroke: #6E72EC;
+}
+
+.cancelWrapper {
+    text-align: center;
+}
+
+.cancelButton {
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: rgb(114, 114, 122);
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.cancelButton:hover {
+    text-decoration: underline;
+}
+
+.subName {
+    display: block;
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    line-height: 40px;
+    box-sizing: border-box;
+    font-weight: 900;
+}
+
+.infoTable .infoRow:first-child {
+    padding-top: 0px;
+}
+
+.infoTable .infoRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgb(242, 242, 242);
+}
+
+.infoTable .infoRow .infoCol {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.infoTable .infoRow .infoCol:first-child {
+    font-weight: 600;
+}
+
+.infoTable .infoRow .infoCol:last-child {
+    color: rgb(162, 162, 168);
+}
+
+.infoTable .infoRow:last-child {
+    border: none;
+}
+
+.iWallet {
+    width: 220px;
+    word-break: break-all;
+    text-align: right;
+}
+
+.infoTable {
+    margin-bottom: 10px;
+}
+
+.infoTable .status {
+    padding: 0 10px;
+    height: 25px;
+    display: block;
+    font-size: 14px;
+    line-height: 25px;
+    border-radius: 12.5px;
+}
+
+.infoTable .active {
+    background-color: rgb(84 191 28);
+    color: #fff;
+}
+
+.infoTable .paused {
+    background-color: rgb(241 184 29);
+    color: #fff;
+}
+
+.topPadding10 {
+    padding-top: 10px!important;
+}
+
+/* Receive */
+.receiveHeadline {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.receiveHeadline span {
+    font-size: 18px;
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+.receiveSubHeadline {
+    color: rgb(63, 64, 69);
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 300;
+}
+
+.invisibleCode {
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       
+    width: 100%;
+    background-color: rgb(240, 240, 241);
+    padding: 13px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 12px;
+    line-height: 16px;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.codeCopyWrapper {
+    position: relative;
+}
+
+.codeCopyWrapper .copied {
+    position: absolute;
+    background: #6E72EC;
+    top: -25px;
+    right: 0px;
+    color: #fff;
+    padding: 5px 7px;
+    z-index: 10;
+    border-radius: 5px;
+    font-size: 12px;
+    opacity: 0;
+    transition-duration: 100ms;
+    transition-timing-function: ease;
+}
+
+.codeCopyWrapper .copied.show {
+    opacity: 1;
+}
+
+.invisibleCode .copy {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: rgb(0, 114, 206);
+    font-size: 12px;
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    transition-duration: 100ms;
+    transition-timing-function: ease;
+    cursor: copy;
+}
+
+.invisibleCode .copy:hover {
+    opacity: 0.7;
+}
+
+.integrations {
+
+}
+
+.toggleBlock {
+    padding: 10px 0;
+    border-bottom: 1px solid rgb(242, 242, 242);
+}
+
+.integrations .toggleBlock:last-child {
+    border-bottom: none;
+}
+
+.toggleBlock .toggleHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.toggleBlock .toggleHeader .source {
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.toggleBlock .toggleHeader .source img {
+    width: 25px;
+    margin-right: 8px;
+}
+
+.toggleBlock .toggleHeader .svg {
+    transform: rotate(90deg);
+    cursor: pointer;
+}
+
+.toggleBlock.expanded .toggleHeader .svg {
+    transform: rotate(270deg);
+}
+
+.toggleBlock .toggleBody {
+    margin-top: 10px;
+    display: none;
+    transition-duration: 100ms;
+    transition-timing-function: ease;
+    font-weight: 300;
+}
+.toggleBlock .toggleBody span {
+    font-size: 14px;
+    line-height: 18px;
+}
+.toggleBlock.expanded .toggleBody {
+    display: block;
+}
+
+.paddingBottom10 {
+    padding-bottom: 10px!important;
+}
+
+/* Receive */
+.formWrapper .inputWrapper {
+    margin-bottom: 10px;
+}
+
+.inputWrapper .label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    padding-left: 15px;
+}
+
+.inputWrapper input {
+    width: 100%;
+    height: 40px;
+    border: 2px solid #f5f5f5;
+    background-color: #f5f5f5;
+    padding: 0 15px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.inputWrapper select {
+    width: 100%;
+    height: 40px;
+    border: 2px solid #f5f5f5;
+    padding: 0 15px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+       -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    position: relative;
+    background: #f5f5f5 url(../img/arrow.svg) no-repeat center right 15px;
+}
+
+.doubleInput {
+    display: flex;
+    justify-content: space-between;
+}
+
+.doubleInput .inputWrapper {
+    width: calc(50% - 10px);
+}
+
+#noSubs {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.requiredStar {
+    color: rgb(229, 72, 77);
+}
+
+.requiredError {
+    border: 2px solid rgb(255, 88, 93)!important;
+}
+
+.linkP {
+    text-align: center;
+    padding: 20px 0;
+}
+
+#linkAcc .svg {
+    fill: #fff;
+}
+
+#linkAcc:hover .svg {
+    fill: #6E72EC;
+}
+
+.toggleBody .invisibleCode {
+    margin-bottom: 0px;
+}
+
+.toggleBody .invisibleCode .copy {
+    top: 11px;
+}
+
+*:focus {
+    outline: none;
+}

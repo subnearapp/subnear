@@ -1,0 +1,45 @@
+{
+    "manifest_version": 2,
+    "name": "Subnear",
+    "description": "Subscribe to anything",
+    "version": "1.0",
+    "key": "subnearextension",
+    "icons": {"128": "resources/icon-128.png"},
+    "browser_action": {
+        "default_icon": "resources/toolbar-icon-19.png",
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "activeTab",
+        "tabs",
+        "identity",
+        "externally_connectable",
+        "storage",
+        "scripting"
+      ],
+      "background": {
+        "scripts": [
+          "js/near-api-js.min.js",
+          "js/background.js"
+        ]
+      },
+    "content_scripts": [
+    {
+      "matches": [
+          "*://*.com/*",
+          "*://*.tv/*",
+          "*://*.io/*",
+          "*://127.0.0.1:*/*"
+      ],
+      "js": ["js/connection.js","js/content.js"],
+      "css" : ["css/button.css"]
+    }
+  ],
+    "externally_connectable": {
+        "ids": ["*"],
+      "matches": [
+          "*://www.foo.com/*",
+          "*://127.0.0.1:*/*"
+      ]
+    }
+}

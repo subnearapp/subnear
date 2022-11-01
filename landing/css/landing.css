@@ -1,0 +1,140 @@
+html {
+    height: 100%;
+}
+body {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;;
+    height: 100%;
+    background: url("../img/background.png") no-repeat center bottom -350px;
+    background-size: cover;
+}
+
+.step {
+    display: none;
+    font-family: 'Inter', sans-serif;
+}
+
+#step-0 {
+    display: block;
+}
+
+.button {
+    color: #fff;
+    background-color: #6E72EC;
+    cursor: pointer;
+    border: 2px solid #fff;
+    height: 56px;
+    padding: 0 50px;
+    border-radius: 28px;
+    font-weight: 600;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 100ms;
+    transition-timing-function: ease;
+    margin: 0 auto;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.button .svg {
+    margin-right: 5px;
+}
+
+.button:hover {
+    background-color: inherit;
+    border-color: #6E72EC;
+    color: #6E72EC;
+}
+
+.logo {
+    width: 250px;
+    margin-bottom: 30px;
+}
+
+.step {
+
+}
+.headerP {
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    color: #6E72EC;
+}
+.textP {
+    line-height: 34px;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+#step-1 .svg {
+    margin-right: 0px;
+}
+
+.accWrapper {
+    display: flex;
+    justify-content: center;;
+}
+#accountBlock {
+    background-color: rgb(240, 240, 241);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 40px;
+    padding: 2px 5px 2px 2px;
+    user-select: none;
+    padding: 4px 5px 4px 4px;
+    margin-bottom: 30px;
+}
+
+#accountBlock span {
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0px 14px 0px 5px;
+    white-space: nowrap;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: rgb(114, 114, 122);
+}
+.iconAboveText {
+    margin-bottom: 20px;
+}
+
+#signIn .svg {
+    fill: #fff;
+}
+
+#signIn:hover .svg {
+    fill: #6E72EC;
+}
+
+#linkAccount .svg path {
+    stroke: #fff;
+}
+
+#linkAccount:hover .svg path {
+    stroke: #6E72EC;
+}
+
+#signout .svg path {
+    stroke: #fff;
+}
+
+#signout:hover .svg path {
+    stroke: #6E72EC;
+}
+
+
+#openWebstore .svg path {
+    stroke: #fff;
+}
+
+#openWebstore:hover .svg path {
+    stroke: #6E72EC;
+}
+
+

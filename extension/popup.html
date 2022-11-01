@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/popup.css">
+    <title>Subnear</title>
+</head>
+<body>
+    <div id="modal">
+        <div id="linkAccountError" style="display: none;">
+            <div class="modalContent" style="text-align: center;">
+                <img src="img/Subnear.svg" alt="" style="width: 120px;">
+                <p class="linkP">You need to link your NEAR account</p>
+                <button class="button" id="linkAcc">
+                    <svg class="svg" width="40" height="40" viewBox="0 0 288 288"><g><path d="M187.58,79.81l-30.1,44.69a3.2,3.2,0,0,0,4.75,4.2L191.86,103a1.2,1.2,0,0,1,2,.91v80.46a1.2,1.2,0,0,1-2.12.77L102.18,77.93A15.35,15.35,0,0,0,90.47,72.5H87.34A15.34,15.34,0,0,0,72,87.84V201.16A15.34,15.34,0,0,0,87.34,216.5h0a15.35,15.35,0,0,0,13.08-7.31l30.1-44.69a3.2,3.2,0,0,0-4.75-4.2L96.14,186a1.2,1.2,0,0,1-2-.91V104.61a1.2,1.2,0,0,1,2.12-.77l89.55,107.23a15.35,15.35,0,0,0,11.71,5.43h3.13A15.34,15.34,0,0,0,216,201.16V87.84A15.34,15.34,0,0,0,200.66,72.5h0A15.35,15.35,0,0,0,187.58,79.81Z"/></g></svg>
+                    <span style="margin-left: -5px;">Link Account</span>
+                </button>
+            </div>
+        </div>
+        <!-- Headers -->
+        <div id="header" style="display: none;">
+            <div class="headerTab subscriptions" id="subscriptionsButton">
+                <span class="headerText">Subscriptions</span>
+            </div>
+            <div class="headerTab receive inactive" id="receiveButton">
+                <span class="headerText">Integrations</span>
+            </div>
+        </div>
+        <div id="headerNav" style="display: none;">
+            <div class="backButton" id="backButton">
+                <svg class="svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 12H5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 19L5 12L12 5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </div>
+            <span class="subName" id="headerNavTitle">PewDiePie</span>
+            <div class="editButton" id="editButton">
+                <svg class="svg" width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.5875 27H6.00001C5.73479 27 5.48044 26.8947 5.2929 26.7071C5.10536 26.5196 5.00001 26.2652 5.00001 26V20.4125C4.99955 20.2827 5.02471 20.154 5.07404 20.0339C5.12338 19.9138 5.19591 19.8046 5.28751 19.7125L20.2875 4.71251C20.3806 4.61803 20.4915 4.54299 20.6138 4.49178C20.7361 4.44056 20.8674 4.41418 21 4.41418C21.1326 4.41418 21.2639 4.44056 21.3862 4.49178C21.5085 4.54299 21.6195 4.61803 21.7125 4.71251L27.2875 10.2875C27.382 10.3806 27.457 10.4915 27.5082 10.6138C27.5595 10.7361 27.5858 10.8674 27.5858 11C27.5858 11.1326 27.5595 11.2639 27.5082 11.3862C27.457 11.5086 27.382 11.6195 27.2875 11.7125L12.2875 26.7125C12.1955 26.8041 12.0863 26.8766 11.9661 26.926C11.846 26.9753 11.7174 27.0005 11.5875 27V27Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M17 8L24 15" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- Page Content -->
+        <div id="subscriptionPage" class="modalContent" style="display: none;">
+
+            <div id="noSubs" style="display: none;">
+                <div style="text-align: center;">
+                    <img src="img/undraw_welcome_cats_thqn-2.svg" alt="" style="width: 60%;">
+                </div>
+                <p style="padding-top: 10px;font-weight: 700;">No subscriptions found.</p>
+                </div>
+            <div id="subList" style="display: none"></div>
+            <button class="button" id="addSubscriptionButton">
+                <svg class="svg" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 5V19" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5.5 12H19.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <span id="add-text">Add Subscription</span>
+            </button>
+        </div>
+        <div id="receivePage" class="modalContent paddingBottom10" style="display: none;">
+                <div class="receiveHeadline">
+                    <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.0793 22.0576H11.0793" stroke="#6E72EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M13.0793 27.0576V22.0576" stroke="#6E72EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M4.57928 22.0576V27.0576" stroke="#6E72EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M8.07928 22.0576V27.0576" stroke="#6E72EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M4.57928 24.5576H8.07928" stroke="#6E72EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M26.5793 22.0576V27.0576H29.5793" stroke="#6E72EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M18.0793 27.0576V22.0576L20.5793 25.5576L23.0793 22.0576V27.0576" stroke="#6E72EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M6.07928 17.0576V5.05763C6.07928 4.79242 6.18464 4.53806 6.37218 4.35053C6.55971 4.16299 6.81407 4.05763 7.07928 4.05763H19.0793L26.0793 11.0576V17.0576" stroke="#6E72EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M19.0793 4.05763V11.0576H26.0793" stroke="#6E72EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                    <span>Website:</span>
+                </div>
+                <p class="receiveSubHeadline">Include the following code before the closing &lt;/body> HTML-tag.</p>
+                <div class="codeCopyWrapper">
+                    <div class="copied copiedInfo">Copied!</div>
+                    <pre class="invisibleCode"><div class="copy">
+                            <svg class="copyIntegrationCode svg" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 7.48071H8.25C7.42157 7.48071 6.75 8.15229 6.75 8.98071V15.7307C6.75 16.5591 7.42157 17.2307 8.25 17.2307H15C15.8284 17.2307 16.5 16.5591 16.5 15.7307V8.98071C16.5 8.15229 15.8284 7.48071 15 7.48071Z" stroke="#6E72EC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3.75 11.9807H3C2.60218 11.9807 2.22064 11.8227 1.93934 11.5414C1.65804 11.2601 1.5 10.8785 1.5 10.4807V3.73071C1.5 3.33289 1.65804 2.95136 1.93934 2.67005C2.22064 2.38875 2.60218 2.23071 3 2.23071H9.75C10.1478 2.23071 10.5294 2.38875 10.8107 2.67005C11.092 2.95136 11.25 3.33289 11.25 3.73071V4.48071" stroke="#6E72EC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+
+                        </div><code class="integrationCode" id="integrationCodeMain"></code></pre>
+                </div>
+
+                <div class="receiveHeadline">
+                    <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.5938 10.3125V26.2582C19.5922 26.4296 19.6339 26.5986 19.715 26.7496C19.7962 26.9005 19.9141 27.0286 20.0579 27.1219L21.4758 28.0629C21.6132 28.1546 21.7706 28.212 21.9347 28.2302C22.0989 28.2484 22.265 28.2269 22.4192 28.1675C22.5733 28.1082 22.7109 28.0126 22.8204 27.889C22.9299 27.7653 23.0082 27.6172 23.0485 27.457L24.75 20.625" stroke="#6E72EC" stroke-width="2.0625" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M24.75 20.6233C26.1175 20.6233 27.429 20.08 28.396 19.113C29.363 18.1461 29.9062 16.8345 29.9062 15.467C29.9062 14.0995 29.363 12.788 28.396 11.821C27.429 10.854 26.1175 10.3108 24.75 10.3108H19.5938C19.5938 10.3108 12.5684 10.3108 5.81367 4.65179C5.66343 4.52746 5.48102 4.44829 5.2876 4.42344C5.09418 4.3986 4.89768 4.42911 4.7209 4.51142C4.54412 4.59374 4.3943 4.7245 4.28882 4.88852C4.18335 5.05255 4.12655 5.24311 4.125 5.43812V25.4959C4.12655 25.6909 4.18335 25.8815 4.28882 26.0455C4.3943 26.2095 4.54412 26.3403 4.7209 26.4226C4.89768 26.5049 5.09418 26.5354 5.2876 26.5106C5.48102 26.4858 5.66343 26.4066 5.81367 26.2823C12.5684 20.6233 19.5938 20.6233 19.5938 20.6233H24.75Z" stroke="#6E72EC" stroke-width="2.0625" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Social Media:</span>
+                </div>
+                <p class="receiveSubHeadline">Expand the necessary website and follow the instructions.</p>
+                <div class="integrations">
+                    <div class="toggleBlock">
+                        <div class="toggleHeader">
+                            <div class="source">
+                                <img src="img/youtubeLogo.png">
+                                <span>YouTube</span>
+                            </div>
+                            <svg class="svg" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 13L7 7L1 1" stroke="#6E72EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        </div>
+                        <div class="toggleBody">
+                            <span>Include the following line to the ABOUT page.</span>
+                            <div class="codeCopyWrapper">
+                                <div class="copied copiedInfo" >Copied!</div>
+                                <pre class="invisibleCode"><div class="copy">
+                                 <svg class="copyIntegrationCode svg" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 7.48071H8.25C7.42157 7.48071 6.75 8.15229 6.75 8.98071V15.7307C6.75 16.5591 7.42157 17.2307 8.25 17.2307H15C15.8284 17.2307 16.5 16.5591 16.5 15.7307V8.98071C16.5 8.15229 15.8284 7.48071 15 7.48071Z" stroke="#6E72EC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3.75 11.9807H3C2.60218 11.9807 2.22064 11.8227 1.93934 11.5414C1.65804 11.2601 1.5 10.8785 1.5 10.4807V3.73071C1.5 3.33289 1.65804 2.95136 1.93934 2.67005C2.22064 2.38875 2.60218 2.23071 3 2.23071H9.75C10.1478 2.23071 10.5294 2.38875 10.8107 2.67005C11.092 2.95136 11.25 3.33289 11.25 3.73071V4.48071" stroke="#6E72EC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+
+                            </div><code class="integrationCode" id="integrationCodeTube"></code></pre>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="toggleBlock">
+                        <div class="toggleHeader">
+                            <div class="source">
+                                <img src="img/mediumLogo.png">
+                                <span>Medium</span>
+                            </div>
+                            <svg class="svg" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 13L7 7L1 1" stroke="#6E72EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        </div>
+                        <div class="toggleBody">
+                            <span>Include the following line to the About page.</span>
+                            <div class="codeCopyWrapper">
+                                <div class="copied copiedInfo">Copied!</div>
+                                <pre class="invisibleCode"><div class="copy">
+                            <svg class="copyIntegrationCode svg" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 7.48071H8.25C7.42157 7.48071 6.75 8.15229 6.75 8.98071V15.7307C6.75 16.5591 7.42157 17.2307 8.25 17.2307H15C15.8284 17.2307 16.5 16.5591 16.5 15.7307V8.98071C16.5 8.15229 15.8284 7.48071 15 7.48071Z" stroke="#6E72EC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3.75 11.9807H3C2.60218 11.9807 2.22064 11.8227 1.93934 11.5414C1.65804 11.2601 1.5 10.8785 1.5 10.4807V3.73071C1.5 3.33289 1.65804 2.95136 1.93934 2.67005C2.22064 2.38875 2.60218 2.23071 3 2.23071H9.75C10.1478 2.23071 10.5294 2.38875 10.8107 2.67005C11.092 2.95136 11.25 3.33289 11.25 3.73071V4.48071" stroke="#6E72EC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+
+                            </div><code class="integrationCode" id="integrationCodeMedium"></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="toggleBlock">
+                        <div class="toggleHeader">
+                            <div class="source">
+                                <img src="img/github-logo.png">
+                                <span>Github</span>
+                            </div>
+                            <svg class="svg" width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 13L7 7L1 1" stroke="#6E72EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        </div>
+                        <div class="toggleBody">
+                            <span>Include the following line to the Bio section.</span>
+                            <div class="codeCopyWrapper">
+                                <div class="copied copiedInfo">Copied!</div>
+                                <pre class="invisibleCode"><div class="copy">
+                        <svg class="copyIntegrationCode svg"  width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 7.48071H8.25C7.42157 7.48071 6.75 8.15229 6.75 8.98071V15.7307C6.75 16.5591 7.42157 17.2307 8.25 17.2307H15C15.8284 17.2307 16.5 16.5591 16.5 15.7307V8.98071C16.5 8.15229 15.8284 7.48071 15 7.48071Z" stroke="#6E72EC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3.75 11.9807H3C2.60218 11.9807 2.22064 11.8227 1.93934 11.5414C1.65804 11.2601 1.5 10.8785 1.5 10.4807V3.73071C1.5 3.33289 1.65804 2.95136 1.93934 2.67005C2.22064 2.38875 2.60218 2.23071 3 2.23071H9.75C10.1478 2.23071 10.5294 2.38875 10.8107 2.67005C11.092 2.95136 11.25 3.33289 11.25 3.73071V4.48071" stroke="#6E72EC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+
+                    </div><code class="integrationCode" id="integrationCodeTwitch"></code></pre>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div id="detailsPage" class="modalContent topPadding10" style="display: none;">
+            <div style="display: none;" id="hiddenId"></div>
+            <div class="infoTable">
+                <div class="infoRow">
+                    <div class="infoCol">Status</div>
+                    <div class="infoCol">
+                        <span class="status active" id="detailsStatus">Active</span>
+                    </div>
+                </div>
+                <div class="infoRow">
+                    <div class="infoCol">Source</div>
+                    <div class="infoCol iSource" id="detailsSource">YouTube</div>
+                </div>
+                <div class="infoRow">
+                    <div class="infoCol">Start Date</div>
+                    <div class="infoCol iDate" id="detailsStartDate">12.03.2021</div>
+                </div>
+                <div class="infoRow">
+                    <div class="infoCol">End Date</div>
+                    <div class="infoCol iDate" id="detailsEndDate">12.03.2022</div>
+                </div>
+                <div class="infoRow">
+                    <div class="infoCol">Schedule</div>
+                    <div class="infoCol iDuration" id="detailsSchedule">once a month</div>
+                </div>
+                <div class="infoRow">
+                    <div class="infoCol">Amount</div>
+                    <div class="infoCol iAmount"><span id="detailsAmount">0.1</span> NEAR</div>
+                </div>
+                <div class="infoRow">
+                    <div class="infoCol">Total Sent</div>
+                    <div class="infoCol iTotal"><span id="detailsTotalSent">0.31</span> NEAR</div>
+                </div>
+                <div class="infoRow">
+                    <div class="infoCol">Wallet</div>
+                    <div class="infoCol iWallet" id="detailsWallet">4b81ea8a432b075c495d9fc353faf10bd8e5833ab3258d04b7d6335d1fccf8a3</div>
+                </div>
+            </div>
+            <button class="button continue marginBottom10" id="continueButton" style="display: none;">
+                <svg class="svg" width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 28C22.6274 28 28 22.6274 28 16C28 9.37258 22.6274 4 16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28Z" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                    <path d="M20 16L14 12V20L20 16Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Continue</span>
+            </button>
+            <button class="button pause marginBottom10" id="pauseButton">
+                <svg class="svg" width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 28C22.6274 28 28 22.6274 28 16C28 9.37258 22.6274 4 16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28Z" stroke="#fff" stroke-width="2" stroke-miterlimit="10"/>
+                    <path d="M13 12V20" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M19 12V20" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Pause</span>
+            </button>
+            <button class="button delete" id="deleteButton">
+                <svg class="svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 6H5H21" stroke="#FFDEDF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 11V17" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14 11V17" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <span>Delete</span>
+            </button>
+        </div>
+        <div id="addSubscription" class="modalContent topPadding10" style="display: none;">
+            <div class="formWrapper">
+                <div class="inputWrapper">
+                    <div class="label">Name <span class="requiredStar">*</span></div>
+                    <input type="text" placeholder="" id="addSub_name" class="required">
+                </div>
+                <div class="doubleInput">
+                    <div class="inputWrapper">
+                        <div class="label">Tag</div>
+                        <input type="text" placeholder="" id="addSub_source">
+                    </div>
+
+                    <div class="inputWrapper">
+                        <div class="label">Amount <span class="requiredStar">*</span></div>
+                        <input type="text" placeholder="0.00001" id="addSub_amount" class="required">
+                    </div>
+                </div>
+
+                <div class="inputWrapper">
+                    <div class="label">Schedule <span class="requiredStar">*</span></div>
+                        <select id="addSub_schedule" class="required">
+                            <option value="each second">Each second</option>
+                            <option value="each minute">Each minute</option>
+                            <option value="each hour">Each hour</option>
+                            <option value="each day">Each day</option>
+                            <option value="each week">Each week</option>
+                            <option selected="" value="each month">Each month</option>
+                            <option value="each year">Each year</option>
+                        </select>
+                    </div>
+                    <div class="inputWrapper">
+                        <div class="label">Start Date <span class="requiredStar">*</span></div>
+                        <input type="datetime-local" placeholder="" id="addSub_startDate" class="required">
+                    </div>
+                    <div class="inputWrapper">
+                        <div class="label">End Date</div>
+                        <input type="datetime-local" placeholder="" id="addSub_endDate">
+                    </div>
+
+                <div class="inputWrapper">
+                    <div class="label">Wallet <span class="requiredStar">*</span></div>
+                    <input type="text" placeholder="" id="addSub_wallet" class="required" spellcheck="false">
+                </div>
+            </div>
+            <button class="button continue" id="subscribeButton">
+                <svg class="svg" width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 28C22.6274 28 28 22.6274 28 16C28 9.37258 22.6274 4 16 4C9.37258 4 4 9.37258 4 16C4 22.6274 9.37258 28 16 28Z" stroke="white" stroke-width="2" stroke-miterlimit="10"></path>
+                    <path d="M20 16L14 12V20L20 16Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                <span>Subscribe</span>
+            </button>
+
+            <div class="cancelWrapper">
+                <button class="cancelButton" id="cancelButton">Cancel</button>
+            </div>
+        </div>
+        <div id="editSubscription" class="modalContent topPadding10" style="display: none;">
+            <div class="formWrapper">
+                <div class="inputWrapper">
+                    <div class="label">Name <span class="requiredStar">*</span></div>
+                    <input type="text" placeholder="" value="" id="editSub_name" class="required">
+                </div>
+                <div class="doubleInput">
+                <div class="inputWrapper">
+                    <div class="label">Tag</div>
+                    <input type="text" placeholder="" value="YouTube" id="editSub_source" >
+                </div>
+                <div class="inputWrapper">
+                    <div class="label">Amount <span class="requiredStar">*</span></div>
+                    <input type="text" placeholder="0.00001" value="" id="editSub_amount" class="required">
+                </div>
+                </div>
+                <div class="inputWrapper">
+                    <div class="label">Schedule <span class="requiredStar">*</span></div>
+                    <select id="editSub_schedule" class="required">
+                        <option value="each second">Each second</option>
+                        <option value="each minute">Each minute</option>
+                        <option value="each hour">Each hour</option>
+                        <option value="each day">Each day</option>
+                        <option value="each week">Each week</option>
+                        <option selected="" value="each month">Each month</option>
+                        <option value="each year">Each year</option>
+                    </select>
+                </div>
+
+                    <div class="inputWrapper">
+                        <div class="label">Start Date <span class="requiredStar">*</span></div>
+                        <input type="datetime-local" placeholder="" value="" id="editSub_startDate" class="required">
+                    </div>
+                    <div class="inputWrapper">
+                        <div class="label">End Date</div>
+                        <input type="datetime-local" placeholder="" value="" id="editSub_endDate">
+                    </div>
+
+                <div class="inputWrapper">
+                    <div class="label">Wallet <span class="requiredStar">*</span></div>
+                    <input type="text" placeholder="" id="editSub_wallet" class="required">
+                </div>
+            </div>
+            <button class="button continue" id="saveButton">
+                <svg class="svg" width="24" height="24" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.42237 11.6029V26.1904C5.42237 26.4557 5.52773 26.71 5.71526 26.8975C5.9028 27.0851 6.15715 27.1904 6.42237 27.1904H26.4224C26.6876 27.1904 26.9419 27.0851 27.1295 26.8975C27.317 26.71 27.4224 26.4557 27.4224 26.1904V6.19044C27.4224 5.92522 27.317 5.67087 27.1295 5.48333C26.9419 5.29579 26.6876 5.19044 26.4224 5.19044H11.8349C11.705 5.18998 11.5764 5.21514 11.4562 5.26447C11.3361 5.31381 11.2269 5.38634 11.1349 5.47794L5.70987 10.9029C5.61828 10.995 5.54574 11.1042 5.49641 11.2243C5.44707 11.3444 5.42191 11.4731 5.42237 11.6029V11.6029Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M16.4224 22.1904C18.3554 22.1904 19.9224 20.6234 19.9224 18.6904C19.9224 16.7574 18.3554 15.1904 16.4224 15.1904C14.4894 15.1904 12.9224 16.7574 12.9224 18.6904C12.9224 20.6234 14.4894 22.1904 16.4224 22.1904Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12.4224 10.1904H20.4224V5.19043" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Save</span>
+            </button>
+            <div class="cancelWrapper">
+                <button class="cancelButton" id="cancelEditButton">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/methods.js"></script>
+    <script src="js/popup.js"></script>
+</body>
+</html>
