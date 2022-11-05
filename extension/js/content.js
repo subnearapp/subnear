@@ -96,7 +96,6 @@ function setupMedium() {
     if (path.includes("@")) {
         const channelName = document.querySelector(".pw-author-name span").textContent;
         const accoutnId = path.replace("/@","");
-        console.log(accoutnId)
         const channelId = path.split('/')[2];
         fetch('https://api.codetabs.com/v1/proxy?quest=https://medium.com/@' + accoutnId + '/about')
             .then(
